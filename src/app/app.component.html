@@ -1,4 +1,5 @@
 <div class="container1">
+  <button type="button" class="btn btn-sm btn-success" (click)="add()" style="margin: 7px">Add new</button>
   <table class="table table-bordered">
     <thead style="padding: 10px">
     <th *ngFor="let column of columns" scope="col" style="padding: 10px; border-right: 1px solid #ced4da">
@@ -7,11 +8,15 @@
         <input class="form-control" placeholder="Filter..." (keyup)="onChangeEvent($event, column)">
       </div>
     </th>
+    <th scope="col" style="padding: 10px; border-right: 1px solid #ced4da">Edit</th>
     </thead>
     <tbody>
     <tr *ngFor="let d of data">
       <td *ngFor="let column of columns">
         {{ d[column] }}
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" (click)="edit(d._id)">Edit</button>
       </td>
     </tr>
     </tbody>

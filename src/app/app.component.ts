@@ -10,21 +10,26 @@ import {HttpClient} from "@angular/common/http";
 export class AppComponent {
   title = 'filter-db';
   columns: string[] = [
-    'id',
-    'certificate_number',
-    'business_name',
-    'date',
-    'result',
-    'sector',
+    'column_A',
+    'column_B',
+    'column_C',
+    'column_D',
+    'column_E',
+    'column_F',
   ];
   filters = {
-    id: '',
-    certificate_number: '',
-    business_name: '',
-    date: '',
-    result: '',
-    sector: '',
+    column_A: '',
+    column_B: '',
+    column_C: '',
+    column_D: '',
+    column_E: '',
+    column_F: '',
   }
+
+  newData = {
+
+  }
+
   data: any = []
 
   constructor(private http: HttpClient) {
@@ -38,14 +43,8 @@ export class AppComponent {
 
   onChangeEvent(event: any, column: string) {
     const val = event.target.value;
-    if(column === 'certificate_number') {
       // @ts-ignore
-      this.filters[column] = +val;
-    }
-    else {
-      // @ts-ignore
-      this.filters[column] = val;
-    }
+    this.filters[column] = val;
 
     this.http.post('http://localhost:3000/data',{
       filters: this.filters
@@ -53,4 +52,14 @@ export class AppComponent {
       this.data = data;
     });
   }
+
+  edit(_id: any) {
+    console.log(_id);
+  }
+
+  add() {
+
+  }
 }
+
+//
